@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+</script>
+<script
+  src="https://code.jquery.com/jquery-3.7.0.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+  crossorigin="anonymous"></script>
+  
+</head>
+<body>
+    <div class="Header"><h1>Witaj w grze Saper</h1>
+        <h3>Kliknij poniższy przycisk, aby rozpocząć gre</h3>
+        <input id="row_num" type="number" min="10" max="50">
+        <input id="col_num" type="number" min="10" max="50">
+        <div id="timer"></div>
+        <button id="start">Start</button>
+        <button id="leaderboard">Pokaż ranking</button></div>
+    <h1 id="counter"></h1>
+    <div class="Game"></div>
+    <div class="leaderboards"></div>
+    
+</body>
+<script src="{{url_for('static', filename='communication.js')}}"></script>
+</html>
